@@ -1,0 +1,12 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'bootstrap/dist/css/bootstrap';
+@import 'shards-ui/dist/css/shards';
+
+@import 'pattern/00-common/common';
+
+@import 'pattern/01-atoms/cards';
+
+@import 'pattern/04-templates/base';
