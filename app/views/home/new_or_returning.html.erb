@@ -2,14 +2,14 @@
   <h2 class="mx-auto mb-4">Is the customer New or Returning?</h2>
 </div>
 <div class="row justify-content-around">
-  <div v-on:click="goTo('/purchase-ticket?returning=false')" class="card text-center stats-small--1 col-4">
+  <div v-on:click="goTo('/purchase-ticket?returning=false')" class="card clickable text-center stats-small--1 col-4">
     <div class="card-body">
       <span class="stats-small__label">New Customer</span>
       <br>
       <i class="card-icon margin-top fa fa-user-plus" aria-hidden="true"></i>
     </div>
   </div>
-  <div v-on:click="goTo('/purchase-ticket?returning=true')" class="card text-center stats-small--1 col-4">
+  <div v-on:click="goTo('/purchase-ticket?returning=true')" class="card clickable text-center stats-small--1 col-4">
     <div class="card-body">
       <span class="stats-small__label">Returning Customer</span>
       <br>

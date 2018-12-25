@@ -13,4 +13,9 @@ class HomeController < ApplicationController
 
     render layout: 'home'
   end
+
+  def confirm
+
+    render layout: 'home'
+  end
 end
