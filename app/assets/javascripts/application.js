@@ -12,7 +12,9 @@
 //
 //= require jquery/dist/jquery
 //= require bootstrap/dist/js/bootstrap
+//= require chart.js/dist/Chart
 //= require vue/dist/vue
+//= require shards-ui/dist/js/shards
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
