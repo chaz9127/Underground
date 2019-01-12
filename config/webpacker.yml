@@ -5,6 +5,11 @@ default: &default
   source_entry_path: packs
   public_output_path: packs
   cache_path: tmp/cache/webpacker
+  resolve: {
+    alias: {
+      vue: 'vue/dist/vue.js'
+    }
+  }
 
   # Additional paths webpack should lookup modules
   # ['app/assets', 'engine/foo/app/assets']
