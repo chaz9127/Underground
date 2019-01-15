@@ -1,5 +1,4 @@
 /lib
-/node_modules/*
 *.log
 /tmp/
-.env.local
+/node_modules/
