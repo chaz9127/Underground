@@ -42931,3 +42931,42 @@ Processing by HomeController#new_or_returning as HTML
 Completed 200 OK in 4376ms (Views: 4375.4ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for 127.0.0.1 at 2019-01-27 12:57:08 -0500
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/home
+  Rendered home/index.html.erb within layouts/home (2.2ms)
+[Webpacker] Compiling…
+[Webpacker] Compilation failed:
+/Users/gamersensei/Desktop/Git/Underground/vendor/bundle/ruby/2.5.0/gems/webpacker-3.5.5/lib/webpacker/webpack_runner.rb:11:in `exec': No such file or directory - /Users/gamersensei/Desktop/Git/Underground/node_modules/.bin/webpack (Errno::ENOENT)
+	from /Users/gamersensei/Desktop/Git/Underground/vendor/bundle/ruby/2.5.0/gems/webpacker-3.5.5/lib/webpacker/webpack_runner.rb:11:in `block in run'
+	from /Users/gamersensei/Desktop/Git/Underground/vendor/bundle/ruby/2.5.0/gems/webpacker-3.5.5/lib/webpacker/webpack_runner.rb:10:in `chdir'
+	from /Users/gamersensei/Desktop/Git/Underground/vendor/bundle/ruby/2.5.0/gems/webpacker-3.5.5/lib/webpacker/webpack_runner.rb:10:in `run'
+	from /Users/gamersensei/Desktop/Git/Underground/vendor/bundle/ruby/2.5.0/gems/webpacker-3.5.5/lib/webpacker/runner.rb:6:in `run'
+	from ./bin/webpack:15:in `<main>'
+
+
+[Webpacker] Compiling…
+[Webpacker] Compilation failed:
+/Users/gamersensei/Desktop/Git/Underground/vendor/bundle/ruby/2.5.0/gems/webpacker-3.5.5/lib/webpacker/webpack_runner.rb:11:in `exec': No such file or directory - /Users/gamersensei/Desktop/Git/Underground/node_modules/.bin/webpack (Errno::ENOENT)
+	from /Users/gamersensei/Desktop/Git/Underground/vendor/bundle/ruby/2.5.0/gems/webpacker-3.5.5/lib/webpacker/webpack_runner.rb:11:in `block in run'
+	from /Users/gamersensei/Desktop/Git/Underground/vendor/bundle/ruby/2.5.0/gems/webpacker-3.5.5/lib/webpacker/webpack_runner.rb:10:in `chdir'
+	from /Users/gamersensei/Desktop/Git/Underground/vendor/bundle/ruby/2.5.0/gems/webpacker-3.5.5/lib/webpacker/webpack_runner.rb:10:in `run'
+	from /Users/gamersensei/Desktop/Git/Underground/vendor/bundle/ruby/2.5.0/gems/webpacker-3.5.5/lib/webpacker/runner.rb:6:in `run'
+	from ./bin/webpack:15:in `<main>'
+
+
+Completed 200 OK in 4557ms (Views: 4548.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/events?latest=true" for 127.0.0.1 at 2019-01-27 12:57:13 -0500
+Processing by Api::EventsController#index as JSON
+  Parameters: {"latest"=>"true"}
+  [1m[36mEvent Load (12.4ms)[0m  [1m[34mSELECT  "events".* FROM "events" ORDER BY "events"."start_date" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/events_controller.rb:37
+  [1m[36mTicket Load (3.8ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."event_id" = $1[0m  [["event_id", 34]]
+  ↳ app/models/event.rb:15
+Completed 201 Created in 145ms (Views: 0.9ms | ActiveRecord: 30.8ms)
+
+
