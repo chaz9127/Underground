@@ -1,11 +1,22 @@
 .margin-top {
-  margin-top: 1.25em;
+  margin-top: 1.25rem;
 }
 
 .margin-right {
-  margin-right: 1.25em;
+  margin-right: 1.25rem;
+}
+.margin-right-x-small {
+  margin-right: .75rem;
 }
 
 .clickable {
   cursor: pointer;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }

@@ -13,6 +13,7 @@
 //= require jquery/dist/jquery
 //= require bootstrap/dist/js/bootstrap
 //= require chart.js/dist/Chart
+//= require moment/moment
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks

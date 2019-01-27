@@ -10,6 +10,7 @@ class Ticket < ApplicationRecord
       id: id,
       price: price,
       name: name,
+      display: "#{name} ($#{sprintf('%.2f', price/100)})",
       created_at: created_at,
       updated_at: updated_at
     }

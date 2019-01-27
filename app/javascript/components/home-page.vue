@@ -1,8 +1,9 @@
 <template>
   <div>
-    <div class="row justify-content-around">
+    <div class="row justify-content-around margin-top">
       <nav-button
         route-name="new-or-returning"
+        route-context="new-or-returning"
         button-text="Purchase New Ticket!"
         icon="fa fa-ticket">
       </nav-button>
@@ -29,13 +30,29 @@
 
 <script>
   import NavButton from '../components/nav-button.vue';
+  import EventStore from '../stores/event-store.js';
 
   export default {
     data: function () {
-      return {}
+      return {
+        EventStore: EventStore.data
+      }
     },
     methods: {},
-    components: { NavButton }
+    components: { NavButton },
+    beforeMount: function() {
+      var params = {
+        params: {
+          latest: true
+        }
+      };
+      
+      this.$http.get('/api/events', params).then(response => {
+        EventStore.methods.addEvent(response.body.events[0]);
+      }, response => {
+        console.log('error', response)
+      });
+    }
   }
 </script>
 

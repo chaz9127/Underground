@@ -1,11 +1,12 @@
 <template>
   <div>
     <div class="margin-top">
-      <button class="btn btn-primary">Create New Event</button>
+      <button class="btn btn-primary" v-on:click="goTo('create-event')">Create New Event</button>
     </div>
     <table class="table margin-top">
       <thead>
         <tr>
+          <th></th>
           <th scope="col">Date</th>
           <th scope="col">Name</th>
           <th scope="col">Type</th>
@@ -13,19 +14,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>01/05/2019</td>
-          <td>CC Bachata</td>
-          <td class="special">Special</td>
-          <td><button class="btn btn-success margin-right">Duplicate</button><button class="btn btn-warning">Edit</button></td>
+        <tr v-for="event in events">
           <td></td>
-        </tr>
-        <tr>
-          <td>12/01/2018</td>
-          <td>CC Bachata</td>
-          <td class="special">Special</td>
-          <td><button class="btn btn-success margin-right">Duplicate</button><button class="btn btn-warning">Edit</button></td>
-          <td></td>
+          <td>{{properDate(event.start_date)}}</td>
+          <td>{{event.event_name}}</td>
+          <td v-bind:class="{'special': event.event_type == 'special'}" class="capitalize">{{event.event_type}}</td>
+          <td><button class="btn btn-success margin-right-x-small">Duplicate</button><button class="btn btn-warning">Edit</button></td>
         </tr>
       </tbody>
     </table>
@@ -34,10 +28,32 @@
 
 <script>
   export default {
-    data: function () {
-      return {}
+    beforeDestroy () {
+      if (this.$route.name === 'home' ) {
+        window.location = '/';
+      }
     },
-    methods: {},
+    beforeCreate() {
+      this.$http.get('/api/events').then(response => {
+        this.events = response.data.events;
+      }, response => {
+        
+      });
+    },
+    data: function () {
+      return {
+        events: []
+      }
+    },
+    methods: {
+      goTo: function(name) {
+        this.$router.push({name: name})
+      },
+      properDate: function(date) {
+        var date = moment(date).format('MMMM Do YYYY');
+        return date;
+      }
+    },
     components: {}
   }
 </script>

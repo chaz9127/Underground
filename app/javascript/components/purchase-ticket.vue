@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="text-center">{{welcomeMessage()}}</h2>
+    <h2 class="text-center">{{welcomeMessage()}} {{EventStore.customerType}}</h2>
     <form class="needs-validation big-form">
       <div class="form-row margin-top">
         <div class="col-4 offset-4">
@@ -65,9 +65,13 @@
 </template>
 
 <script>
+  import EventStore from '../stores/event-store.js';
+
   export default {
     data: function () {
-      return {}
+      return {
+        EventStore: EventStore.data
+      }
     },
     methods: {
       welcomeMessage: function() {

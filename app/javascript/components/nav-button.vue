@@ -1,6 +1,6 @@
 <template>
   <div class="col-4">
-    <div v-on:click="goTo(routeName, routeContext)" class="card clickable text-center">
+    <div v-on:click="goTo(routeName, routeContext);" class="card clickable text-center">
       <div class="card-body">
         <span class="stats-small__label">{{buttonText}}</span>
         <br>
@@ -12,15 +12,25 @@
 
 <script>
   export default {
-    props: ['routeName', 'routeContext', 'buttonText', 'icon'],
+    props: {
+      routeName: { type: String },
+      routeContext: { type: String },
+      buttonText: { type: String },
+      icon: { type: String },
+      callthis: { type: Function, default: function() { return 'unset' } }
+    },
     data: function () {
-      return {}
+      return {
+        
+      }
     },
     methods: {
       goTo: function(name, context) {
-        console.log(name, context)
-        this.$router.push({name: name, params: { context: context }});
+        this.$router.push({ name }, { context });
       }
+    },
+    beforeMount() {
+      console.log('new+26');
     }
   }
 </script>

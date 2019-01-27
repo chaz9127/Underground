@@ -3,15 +3,21 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
-    "bootstrap": "4.2.3",
-    "chart.js": "^2.7.3",
-    "jquery": "^3.3.1",
-    "material-dashboard": "^2.1.0",
+    "bootstrap": "4.2.1",
     "bootstrap-admin-dashboard-free": "^2.0.0",
+    "chart.js": "^2.7.3",
+    "chartjs": "^0.3.24",
+    "jquery": "^3.3.1",
+    "luxon": "^1.10.0",
+    "material-dashboard": "^2.1.0",
+    "moment": "^2.23.0",
     "vue": "^2.5.21",
-    "vue-router": "^3.0.2",
+    "vue-datetime": "^1.0.0-beta.9",
     "vue-loader": "14.2.2",
-    "vue-template-compiler": "^2.5.21"
+    "vue-resource": "^1.5.1",
+    "vue-router": "^3.0.2",
+    "vue-template-compiler": "^2.5.21",
+    "weekstart": "^1.0.0"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"
