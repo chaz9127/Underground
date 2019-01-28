@@ -49,6 +49,7 @@
     methods: {},
     components: { NavButton },
     beforeMount: function() {
+      console.log('new 56')
       var params = {
         params: {
           latest: true

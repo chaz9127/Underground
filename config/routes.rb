@@ -12,5 +12,6 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :events, only: [:create, :index]
+    resources :customer_purchases, only: [:create]
   end
 end

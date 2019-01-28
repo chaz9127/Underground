@@ -5,12 +5,14 @@
     </div>
     <div class="row justify-content-around">
       <div class="col-6">
+        <div class="inline-error" v-if="!EventStore.valid && !EventStore.selectedTicket">
+          * Please select a ticket *
+        </div>
         <div class="input-group">
           <select v-model="EventStore.selectedTicket" id="tickets" class="big-form-element custom-select tickets" required>
             <option value="0">Select a Ticket</option>
             <option v-for="ticket in EventStore.event.tickets" v-bind:value="ticket.id">{{ticket.display}}</option>
           </select>
-          <div v-if="invalid" class="invalid-feedback">Please select a ticket to purchase!</div>
         </div>
       </div>
     </div>
@@ -27,7 +29,7 @@
     <div class="row justify-content-around margin-top">
       <div class="col-6">
         <nav-button
-          :when-clicked="openModal"
+          :when-clicked="purchaseTicketForReturningUser"
           button-text="Returning Customer">
         </nav-button>
       </div>
@@ -36,13 +38,15 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="confirmModalLabel">You're All Set!</h5>
+            <h5 class="modal-title" id="confirmModalLabel">{{modalHeader}}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            Please give the device back and enjoy your time!
+            {{modalBody1}}
+            <br>
+            {{modalBody2}}
           </div>
           <div class="modal-footer">
             <button v-on:click="goTo('/')" data-dismiss="modal"  type="button" class="btn btn-primary">Done</button>
@@ -66,17 +70,39 @@
     data: function () {
       return {
         EventStore: EventStore.data,
-        invalid: false
+        invalid: false,
+        modalBody1: '',
+        modalBody2: '',
+        modalHeader: ''
       }
     },
     methods: {
-      openModal: function() {
-        $('#confirmModal').modal('show');
+      purchaseTicketForReturningUser: function() {
+        if (!this.isValid()) {
+          return false
+        }
+
+        EventStore.methods.setCustomer({
+          type: 'returning',
+          firstName: '',
+          lastName: '',
+          email: ''
+        });
+        var params = EventStore.methods.purchaseTicketParams();
+        this.$http.post('/api/customer_purchases', params).then(response => {
+          var ticketDisplay = response.data.customer_purchase.ticket.display
+          this.modalHeader = "You're All Set!";
+          this.modalBody1 = "Thank you for purchasing " + ticketDisplay + "!";
+          this.modalBody2 = "Please give the machine back and enjoy your time!";
+          $('#confirmModal').modal('show');
+        }, response => {
+          console.log('fail');
+        });
         return true;
       },
       setNewCustomerType: function() {
         if (this.isValid()) {
-          EventStore.methods.setCustomerType('new');
+          EventStore.methods.setCustomer('new');
           return true;
         } else {
           return false;

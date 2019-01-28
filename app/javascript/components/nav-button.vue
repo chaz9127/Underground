@@ -32,9 +32,6 @@
           console.log('not valid homie')
         }
       }
-    },
-    beforeMount() {
-      console.log('new+38');
     }
   }
 </script>
