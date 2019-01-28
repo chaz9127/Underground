@@ -1,11 +1,9 @@
 <template>
-  <div class="col-4">
-    <div v-on:click="goTo(routeName, routeContext);" class="card clickable text-center">
-      <div class="card-body">
-        <span class="stats-small__label">{{buttonText}}</span>
-        <br>
-        <i v-bind:class="icon" class="card-icon margin-top" aria-hidden="true"></i>
-      </div>
+  <div v-on:click="goTo(routeName, routeContext);" class="card clickable text-center">
+    <div class="card-body">
+      <span class="stats-small__label">{{buttonText}}</span>
+      <br>
+      <i v-bind:class="icon" class="card-icon margin-top" aria-hidden="true"></i>
     </div>
   </div>
 </template>
@@ -30,7 +28,7 @@
       }
     },
     beforeMount() {
-      console.log('new+26');
+      console.log('new+27');
     }
   }
 </script>
