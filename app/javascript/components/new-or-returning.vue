@@ -1,23 +1,23 @@
 <template>
   <div>
     <div class="row">
-      <h2 class="mx-auto mb-4 center-text">Is the customer New or Returning?</h2>
+      <h2 class="mb-4 col-12 col-md-8 offset-0 offset-md-2">Is the customer New or Returning?</h2>
     </div>
-    <div class="row justify-content-around">
-      <div class="col-6">
-        <div class="inline-error" v-if="!EventStore.valid && !EventStore.selectedTicket">
+    <div class="row">
+      <div class="col-12 col-md-8 offset-md-2">
+        <div class="inline-error" v-if="!EventStore.data.valid && !EventStore.data.selectedTicket">
           * Please select a ticket *
         </div>
         <div class="input-group">
-          <select v-model="EventStore.selectedTicket" id="tickets" class="big-form-element custom-select tickets" required>
+          <select v-model="EventStore.data.selectedTicket" id="tickets" class="big-form-element custom-select tickets" required>
             <option value="0">Select a Ticket</option>
-            <option v-for="ticket in EventStore.event.tickets" v-bind:value="ticket.id">{{ticket.display}}</option>
+            <option v-for="ticket in EventStore.data.event.tickets" v-bind:value="ticket.id">{{ticket.display}}</option>
           </select>
         </div>
       </div>
     </div>
-    <div class="row justify-content-around mt-3">
-      <div class="col-6">
+    <div class="row mt-4">
+      <div class="col-12 col-md-8 offset-md-2">
         <nav-button
           :when-clicked="setNewCustomerType"
           route-name="purchase-ticket"
@@ -26,8 +26,8 @@
         </nav-button>
       </div>
     </div>
-    <div class="row justify-content-around margin-top">
-      <div class="col-6">
+    <div class="row mt-4">
+      <div class="col-12 col-md-8 offset-md-2">
         <nav-button
           :when-clicked="purchaseTicketForReturningUser"
           button-text="Returning Customer">
@@ -69,7 +69,7 @@
     },
     data: function () {
       return {
-        EventStore: EventStore.data,
+        EventStore: EventStore,
         invalid: false,
         modalBody1: '',
         modalBody2: '',
@@ -78,17 +78,18 @@
     },
     methods: {
       purchaseTicketForReturningUser: function() {
+        debugger
         if (!this.isValid()) {
           return false
         }
 
-        EventStore.methods.setCustomer({
+        this.EventStore.methods.setCustomer({
           type: 'returning',
           firstName: '',
           lastName: '',
           email: ''
         });
-        var params = EventStore.methods.purchaseTicketParams();
+        var params = this.EventStore.methods.purchaseTicketParams();
         this.$http.post('/api/customer_purchases', params).then(response => {
           var ticketDisplay = response.data.customer_purchase.ticket.display
           this.modalHeader = "You're All Set!";
@@ -102,15 +103,15 @@
       },
       setNewCustomerType: function() {
         if (this.isValid()) {
-          EventStore.methods.setCustomer('new');
+          this.EventStore.methods.setCustomer('new');
           return true;
         } else {
           return false;
         }
       },
       isValid: function() {
-        EventStore.data.valid = !!EventStore.data.selectedTicket;
-        return EventStore.data.valid;
+        this.EventStore.data.valid = !!this.EventStore.data.selectedTicket;
+        return this.EventStore.data.valid;
       },
       goTo: function(name) {
         $('#confirmModal').modal('hide')

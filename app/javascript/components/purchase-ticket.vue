@@ -1,20 +1,20 @@
 <template>
   <div>
-    <h2 class="text-center">Welcome to Underground!</h2>
+    <h2 class="mt-4 offset-md-2">Welcome to Underground!</h2>
     <form class="needs-validation big-form">
       <div class="form-row margin-top">
-        <div class="col-4 offset-4">
+        <div class="col-12 col-md-8 offset-md-2">
           <label class="big-form-label" for="email">E-Mail (optional)</label>
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text big-form-prepend" id="inputGroupPrepend"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
             </div>
-            <input v-model="EventStore.customer.firstEmail" type="email" class="form-control" id="email" placeholder="E-mail" aria-describedby="inputGroupPrepend">
+            <input v-model="EventStore.customer.email" type="email" class="form-control" id="email" placeholder="E-mail" aria-describedby="inputGroupPrepend">
           </div>
         </div>
       </div>
       <div class="form-row margin-top">
-        <div class="col-4 offset-4">
+        <div class="col-12 col-md-8 offset-md-2">
           <label class="big-form-label" for="first-name">First Name (optional)</label>
           <div class="input-group">
             <div class="input-group-prepend">
@@ -25,7 +25,7 @@
         </div>
       </div>
       <div class="form-row margin-top">
-        <div class="col-4 offset-4">
+        <div class="col-12 col-md-8 offset-md-2">
           <label class="big-form-label" for="email">Last Name (optional)</label>
           <div class="input-group">
             <div class="input-group-prepend">
@@ -36,8 +36,8 @@
         </div>
       </div>
       <div class="form-row margin-top">
-        <div class="col-4 offset-4">
-          <button class="btn btn-primary" type="button" v-on:click="purchaseTicket()">Purchase</button>
+        <div class="col-12 col-md-8 offset-md-2">
+          <button class="btn btn-primary w-100" type="button" v-on:click="purchaseTicket()">Purchase</button>
         </div>
       </div>
     </form>
@@ -82,12 +82,15 @@
         this.$router.push(name)
       },
       purchaseTicket: function() {
+        console.log('trace0')
         EventStore.methods.setCustomer({
           type: 'new',
           firstName: EventStore.data.customer.firstName,
           lastName: EventStore.data.customer.lastName,
           email:  EventStore.data.customer.email
         });
+
+        console.log(EventStore.data.customer)
 
         var params = EventStore.methods.purchaseTicketParams();
         this.$http.post('/api/customer_purchases', params).then(response => {

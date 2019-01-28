@@ -1,17 +1,17 @@
 <template>
   <div>
-    <h2 class="margin-top offset-4">Create New Event</h2>
+    <h2 class="mt-4 offset-md-2">Create New Event</h2>
     <form class="needs-validation big-form">
-      <div class="form-row margin-top">
-        <div class="col-4 offset-4">
+      <div class="form-row mt-4">
+        <div class="col-12 col-md-8 offset-md-2">
           <label class="big-form-label" for="name">Name</label>
           <div class="input-group">
             <input type="text" class="form-control event-param" id="name" placeholder="Event Name" aria-describedby="inputGroupPrepend" v-model="name" required>
           </div>
         </div>
       </div>
-      <div class="form-row margin-top">
-        <div class="col-4 offset-4">
+      <div class="form-row mt-4">
+        <div class="col-12 col-md-8 offset-md-2">
           <label class="big-form-label" for="description">Description</label>
           <div class="input-group">
             <textarea type="text" class="form-control event-param" id="description" placeholder="Event Description" aria-describedby="inputGroupPrepend" v-model="description">
@@ -19,8 +19,8 @@
           </div>
         </div>
       </div>
-      <div class="form-row margin-top">
-        <div class="col-4 offset-4">
+      <div class="form-row mt-4">
+        <div class="col-12 col-md-8 offset-md-2">
           <label class="big-form-label" for="regularType">Type</label>
           <div class="input-group">
             <select v-model="type" id="regularType" class="custom-select event-param" required>
@@ -31,39 +31,40 @@
           </div>
         </div>
       </div>
-      <div class="form-row margin-top">
-        <div class="col-4 offset-4">
+      <div class="form-row mt-4">
+        <div class="col-12 col-md-8 offset-md-2">
           <label class="big-form-label" for="regularType">Date</label>
           <div class="input-group">
-            <datetime input-class="form-control" v-bind:use12-hour="true" v-bind:minute-step="15" v-bind:type="'datetime'" v-model="date"></datetime>
-            <div class="input-group-append">
+            <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroupPrepend"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
             </div>
+            <datetime input-class="form-control" v-bind:use12-hour="true" v-bind:minute-step="15" v-bind:type="'datetime'" v-model="date"></datetime>
           </div>
         </div>
       </div>
-      <h2 class="margin-top offset-4">Add Tickets <button class="btn btn-success" type="button" v-on:click="addTicket()">Add ticket</button></h2>
-      <div class="form-row margin-top" v-for="(ticket, idx) in tickets">
-        <div class="offset-4 col-3">
+      <h2 class="mt-4 offset-md-2">Add Tickets <button class="btn btn-success" type="button" v-on:click="addTicket()"><i class="fa fa-plus" aria-hidden="true"></i></button></h2>
+      <!-- <button class="btn btn-success" type="button" v-on:click="addTicket()">Add ticket</button> -->
+      <div class="form-row mt-4" v-for="(ticket, idx) in tickets">
+        <div class="col-6 col-md-4 offset-md-2">
           <div class="input-group">
             <input type="text" class="form-control ticket-param" v-bind:id="'ticketName-' + idx" placeholder="Ticket Name" aria-describedby="inputGroupPrepend" v-model="ticket.name" required>
           </div>
         </div>
-        <div class="col-2">
+        <div class="col-4 col-md-3">
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text big-form-prepend" id="inputGroupPrepend"><i class="fa fa-usd" aria-hidden="true"></i></span>
             </div>
-            <input type="number" class="form-control ticket-param" v-bind:id="'ticketPrice-' + idx" placeholder="Ticket Price" aria-describedby="inputGroupPrepend" v-model="ticket.price">
+            <input type="number" class="form-control ticket-param" v-bind:id="'ticketPrice-' + idx" placeholder="Price" aria-describedby="inputGroupPrepend" v-model="ticket.price">
           </div>
         </div>
-        <div class="col-1">
-          <button class="btn btn-danger" type="button" v-on:click="removeTicket(idx)"><i class="fa fa-minus" aria-hidden="true"></i></button>
+        <div class="col-2 col-md-1">
+          <button class="btn btn-danger w-100" type="button" v-on:click="removeTicket(idx)"><i class="fa fa-minus" aria-hidden="true"></i></button>
         </div>
       </div>
-      <div class="form-row margin-top">
-        <div class="offset-4 col-4">
-          <button class="btn btn-primary" type="button" v-on:click="createEvent()"data-toggle="modal" data-target="#confirmModal">Create Event</button>
+      <div class="form-row mt-4">
+        <div class="col-12 col-md-8 offset-md-2">
+          <button class="btn btn-primary w-100" type="button" v-on:click="createEvent()"data-toggle="modal" data-target="#confirmModal">Create Event</button>
         </div>
       </div>
     </form>

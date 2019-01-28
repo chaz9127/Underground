@@ -5,7 +5,6 @@ module Api
     def create
       begin
         ActiveRecord::Base.transaction do
-          binding.pry
           event = Event.find(create_params[:event_id])
           raise "Event with the id (#{create_params[:event_id]}) can not be found" if event.nil?
 
