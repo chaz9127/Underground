@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row justify-content-around">
-      <div class="col-md-6 col-sm-12">
+      <div class="col-12">
         <nav-button
           route-name="new-or-returning"
           route-context="new-or-returning"
@@ -9,23 +9,23 @@
           icon="fa fa-ticket">
         </nav-button>
       </div>
-      <div class="col-md-6 col-sm-12 mt-4 mt-md-0">
+    </div>
+    <div class="row justify-content-around mt-4">
+      <div class="col-12 col-sm-4">
         <nav-button
           route-name="dashboard"
-          button-text="View Analyitics"
+          button-text="View Event Analytics"
           icon="fa fa-bar-chart">
         </nav-button>
       </div>
-    </div>
-    <div class="row justify-content-around mt-4">
-      <div class="col-md-6 col-sm-12">
+      <div class="col-12 col-sm-4 mt-4 mt-sm-0">
         <nav-button
           route-name="events"
           button-text="Create/Edit Events"
           icon="fa fa-calendar-o">
         </nav-button>
       </div>
-      <div class="col-md-6 col-sm-12 mt-4 mt-md-0">
+      <div class="col-12 col-sm-4 mt-4 mt-sm-0">
         <nav-button
           route-name="dashboard"
           button-text="Add Admin User"
