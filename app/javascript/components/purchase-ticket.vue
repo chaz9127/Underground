@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h2 class="text-center">{{welcomeMessage()}} {{EventStore.customerType}}</h2>
+    <h2 class="text-center">{{message}}</h2>
     <form class="needs-validation big-form">
       <div class="form-row margin-top">
         <div class="col-4 offset-4">
-          <label class="big-form-label" for="email">E-Mail</label>
+          <label class="big-form-label" for="email">E-Mail (optional)</label>
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text big-form-prepend" id="inputGroupPrepend"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
@@ -15,7 +15,7 @@
       </div>
       <div class="form-row margin-top">
         <div class="col-4 offset-4">
-          <label class="big-form-label" for="first-name">First Name</label>
+          <label class="big-form-label" for="first-name">First Name (optional)</label>
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text big-form-prepend" id="inputGroupPrepend"><i class="fa fa-user" aria-hidden="true"></i></span>
@@ -26,7 +26,7 @@
       </div>
       <div class="form-row margin-top">
         <div class="col-4 offset-4">
-          <label class="big-form-label" for="email">Last Name</label>
+          <label class="big-form-label" for="email">Last Name (optional)</label>
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text big-form-prepend" id="inputGroupPrepend"><i class="fa fa-user" aria-hidden="true"></i></span>
@@ -70,20 +70,17 @@
   export default {
     data: function () {
       return {
-        EventStore: EventStore.data
+        EventStore: EventStore.data,
+        message: 'Welcome to Underground!'
       }
     },
     methods: {
-      welcomeMessage: function() {
-        if (this.$route.params.context === 'new') {
-          return 'Welcome to Underground!';
-        } else {
-          return 'Welcome Back to Underground!';
-        }
-      },
       goTo: function(name) {
         this.$router.push(name)
       }
+    },
+    beforeMount() {
+      console.log(this.EventStore.customerType)
     }
   }
 </script>

@@ -1,9 +1,9 @@
 <template>
   <div v-on:click="goTo(routeName, routeContext);" class="card clickable text-center">
     <div class="card-body">
-      <span class="stats-small__label">{{buttonText}}</span>
+      <span>{{buttonText}}</span>
       <br>
-      <i v-bind:class="icon" class="card-icon margin-top" aria-hidden="true"></i>
+      <i v-bind:class="icon" class="card-icon mt-4" aria-hidden="true"></i>
     </div>
   </div>
 </template>
@@ -15,7 +15,7 @@
       routeContext: { type: String },
       buttonText: { type: String },
       icon: { type: String },
-      callthis: { type: Function, default: function() { return 'unset' } }
+      whenClicked: { type: Function, default: function() { return true } }
     },
     data: function () {
       return {
@@ -24,11 +24,17 @@
     },
     methods: {
       goTo: function(name, context) {
-        this.$router.push({ name }, { context });
+        if (this.whenClicked()) {
+          if (name) {
+            this.$router.push({ name, params: { context }});
+          }
+        } else {
+          console.log('not valid homie')
+        }
       }
     },
     beforeMount() {
-      console.log('new+29');
+      console.log('new+38');
     }
   }
 </script>

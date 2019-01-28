@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="row justify-content-around margin-top">
+    <div class="row justify-content-around">
       <div class="col-md-6 col-sm-12">
         <nav-button
           route-name="new-or-returning"
@@ -9,7 +9,7 @@
           icon="fa fa-ticket">
         </nav-button>
       </div>
-      <div class="col-md-6 col-sm-12">
+      <div class="col-md-6 col-sm-12 mt-4 mt-md-0">
         <nav-button
           route-name="dashboard"
           button-text="View Analyitics"
@@ -17,7 +17,7 @@
         </nav-button>
       </div>
     </div>
-    <div class="row justify-content-around margin-top">
+    <div class="row justify-content-around mt-4">
       <div class="col-md-6 col-sm-12">
         <nav-button
           route-name="events"
@@ -25,7 +25,7 @@
           icon="fa fa-calendar-o">
         </nav-button>
       </div>
-      <div class="col-md-6 col-sm-12">
+      <div class="col-md-6 col-sm-12 mt-4 mt-md-0">
         <nav-button
           route-name="dashboard"
           button-text="Add Admin User"
