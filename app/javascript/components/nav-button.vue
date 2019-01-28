@@ -28,7 +28,7 @@
       }
     },
     beforeMount() {
-      console.log('new+27');
+      console.log('new+29');
     }
   }
 </script>
